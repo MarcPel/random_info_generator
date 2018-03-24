@@ -1,4 +1,4 @@
-#Random Email + Reaons +(address to come later) Generator - Marc Made!
+#Random Email Generator - Marc Made!
 import random
 
 def wordlist():
@@ -11,16 +11,43 @@ def wordlist():
         list.append(word)
     dict.close()
     return list 
-        
-def printgmail(list):
+
+def addresslist():
+    dict = open('addresses.csv','r')
+    word = 1
+    list = []
+    while word != '':
+        word = dict.readline()
+        word = word.rstrip('\n')
+        list.append(word)
+    dict.close()
+    return list 
+
+def namelist():
+    dict = open('names.csv','r')
+    word = 1
+    list = []
+    while word != '':
+        word = dict.readline()
+        word = word.rstrip('\n')
+        list.append(word)
+    dict.close()
+    return list 
+
+def printgmail(wordlist,addresslist,namelist):
     new = open('gmails.txt','w')
     reasons =['Generate traffic to my site', 'Make extra money for my blog', 'To get rich content for my site', 'Offer products that apply to content on my site', 'Generate extra sales']
     #set range to how many strings you want
-    new.write('Gmail Account' + '\t' + 'Reason' +'\n') 
-    for x in range(10000):
-        new.write(list[random.randrange(0,(len(list)-1))] + list[random.randrange(0,(len(list)-1))] + list[random.randrange(0,(len(list)-1))] + '@gmail.com' + '\t' + reasons[random.randrange(0,(len(reasons)-1))] +'\n')
+    new.write('Name' + '\t' + 'Gmail Account' + '\t' + 'address' + '\t' + 'Reason' +'\n') 
+    for x in range(500):
+        new.write(namelist[x] + '\t' + wordlist[random.randrange(0,(len(wordlist)-1))] + wordlist[random.randrange(0,(len(wordlist)-1))] + wordlist[random.randrange(0,(len(wordlist)-1))] + '@gmail.com' + '\t' + addresslist[x] + '\t' + reasons[random.randrange(0,(len(reasons)-1))] + '\n')
         x +=1 
     new.close()
 
 #Main
-printgmail(wordlist()) 
+
+wordlist = wordlist()
+addresslist = addresslist()
+namelist= namelist()
+printgmail(wordlist,addresslist,namelist)
+print('wrote your file, start making those keys son')
