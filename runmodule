@@ -1,1 +1,25 @@
+#Random Email Generator - Marc Made!
+import random
+
+def wordlist():
+    dict = open('words.csv','r')
+    word = 1
+    list = []
+    while word != '':
+        word = dict.readline()
+        word = word.rstrip('\n')
+        list.append(word)
+    dict.close()
+    return list 
+        
+def printgmail(list):
+    new = open('gmails.csv','w')
+    #set range to how many strings you want
+    for x in range(10000):
+        new.write(list[random.randrange(0,(len(list)-1))] + list[random.randrange(0,(len(list)-1))] + list[random.randrange(0,(len(list)-1))] + '@gmail.com' + '\n')
+        x +=1 
+    new.close()
+
+#Main
+printgmail(wordlist()) 
 
