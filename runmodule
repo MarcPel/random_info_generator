@@ -1,4 +1,4 @@
-#Random Email Generator - Marc Made!
+#Random Email + Reaons +(address to come later) Generator - Marc Made!
 import random
 
 def wordlist():
@@ -13,13 +13,14 @@ def wordlist():
     return list 
         
 def printgmail(list):
-    new = open('gmails.csv','w')
+    new = open('gmails.txt','w')
+    reasons =['Generate traffic to my site', 'Make extra money for my blog', 'To get rich content for my site', 'Offer products that apply to content on my site', 'Generate extra sales']
     #set range to how many strings you want
+    new.write('Gmail Account' + '\t' + 'Reason' +'\n') 
     for x in range(10000):
-        new.write(list[random.randrange(0,(len(list)-1))] + list[random.randrange(0,(len(list)-1))] + list[random.randrange(0,(len(list)-1))] + '@gmail.com' + '\n')
+        new.write(list[random.randrange(0,(len(list)-1))] + list[random.randrange(0,(len(list)-1))] + list[random.randrange(0,(len(list)-1))] + '@gmail.com' + '\t' + reasons[random.randrange(0,(len(reasons)-1))] +'\n')
         x +=1 
     new.close()
 
 #Main
 printgmail(wordlist()) 
-
